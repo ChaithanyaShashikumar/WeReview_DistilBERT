@@ -1,0 +1,20 @@
+﻿.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Large/generated ML files
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.pkl
+
+# Local datasets
+datasets/
+
+# Generated results
+results/
+
+# Environment/local files
+.env
