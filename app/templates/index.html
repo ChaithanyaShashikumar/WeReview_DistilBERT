@@ -7,389 +7,548 @@
   <title>WeReview | Shop with Trust</title>
   <style>
     :root {
-      --saffron: #f59e0b;
-      --teal: #0f766e;
-      --pink: #ec4899;
-      --purple: #6d28d9;
-      --ink: #25213b;
-      --muted: #77738b;
-      --paper: #fffaf5;
-      --white: #ffffff;
+      --purple: #6538a5;
+      --purple-dark: #42206f;
+      --orange: #ffad42;
+      --pink: #ffdfeb;
+      --teal: #d9f5ed;
+      --cream: #fffaf4;
+      --ink: #29233b;
+      --muted: #797386;
+      --line: #eee7f1;
+      --white: #fff;
+      --shadow: 0 12px 35px rgba(60, 35, 90, .08);
     }
 
     * { box-sizing: border-box; }
-
+    html { scroll-behavior: smooth; scroll-padding-top: 95px; }
     body {
       margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: var(--paper);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
       color: var(--ink);
+      background: #fff;
     }
-
-    button, input, textarea { font: inherit; }
-
+    button, input, select, textarea { font: inherit; }
     button { cursor: pointer; }
-
+    a { color: inherit; text-decoration: none; }
     .announcement {
-      padding: 10px 5%;
-      background: var(--teal);
+      background: var(--purple-dark);
       color: white;
       text-align: center;
-      font-size: 13px;
-      letter-spacing: .3px;
+      padding: 10px 14px;
+      font-size: 12px;
+      letter-spacing: .2px;
     }
-
     header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 18px 5%;
-      background: white;
-      border-bottom: 1px solid #eee7f3;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      color: var(--purple);
-      font-size: 27px;
-      font-weight: 850;
-      letter-spacing: -1px;
-    }
-
-    .logo span { color: var(--pink); }
-
-    nav {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: var(--ink);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    nav a:hover { color: var(--purple); }
-
-    .search {
-      display: flex;
-      gap: 8px;
-    }
-
-    .search input {
-      width: 190px;
-      padding: 11px 14px;
-      border: 1px solid #e5ddec;
-      border-radius: 12px;
-      outline-color: var(--purple);
-    }
-
-    .search button, .primary {
-      border: 0;
-      border-radius: 11px;
-      padding: 11px 17px;
-      background: var(--purple);
-      color: white;
-      font-weight: 700;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 28px 22px 60px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.3fr .7fr;
       align-items: center;
       gap: 25px;
+      padding: 15px 5%;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .logo {
+      font-weight: 900;
+      font-size: 26px;
+      letter-spacing: -1.2px;
+      color: var(--purple);
+      white-space: nowrap;
+    }
+    .logo span { color: #f28c35; }
+    nav { display: flex; align-items: center; gap: 20px; }
+    nav a {
+      font-size: 13px;
+      color: #615a6e;
+      font-weight: 650;
+    }
+    nav a:hover { color: var(--purple); }
+    .search {
+      display: flex;
+      gap: 7px;
+      margin-left: auto;
+      max-width: 320px;
+      flex: 1;
+    }
+    .search input {
+      width: 100%;
+      min-width: 60px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      padding: 10px 12px;
+      outline: none;
+    }
+    .search input:focus, input:focus, select:focus, textarea:focus {
+      border-color: var(--purple);
+      outline: 2px solid #6538a51c;
+    }
+    .icon-button {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: white;
+      padding: 10px 12px;
+      color: var(--purple-dark);
+      white-space: nowrap;
+    }
+    .count {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
+      margin-left: 3px;
+      background: var(--orange);
+      border-radius: 99px;
+      color: #382047;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    main { max-width: 1440px; margin: auto; padding: 28px 5% 65px; }
+    .hero {
+      min-height: 360px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 24px;
+      align-items: center;
       padding: 42px;
-      border-radius: 26px;
-      background: linear-gradient(120deg, #fff0d5, #fbe7f4 55%, #e3f6f2);
+      border-radius: 27px;
+      background: linear-gradient(115deg, #fff0d8, #ffe6ef 55%, #e9e0ff);
       overflow: hidden;
     }
-
     .eyebrow {
-      color: var(--teal);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      max-width: 580px;
-      margin: 13px 0;
-      font-size: clamp(32px, 4vw, 52px);
-      line-height: 1.12;
-      letter-spacing: -1.8px;
-    }
-
-    h1 span { color: var(--purple); }
-
-    .hero p {
-      max-width: 540px;
-      color: #615b71;
-      line-height: 1.8;
-    }
-
-    .hero-art {
-      min-height: 210px;
-      display: grid;
-      place-items: center;
-      font-size: 100px;
-      position: relative;
-    }
-
-    .trust-card {
+      display: inline-block;
       background: white;
-      border-radius: 18px;
-      padding: 15px 19px;
-      box-shadow: 0 12px 35px #4d23601a;
-      font-size: 14px;
-      font-weight: 750;
+      border: 1px solid #f4e5f6;
+      border-radius: 99px;
+      padding: 8px 13px;
+      font-size: 11px;
+      color: var(--purple);
+      font-weight: 800;
+      letter-spacing: .4px;
+    }
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(36px, 4.5vw, 58px);
+      letter-spacing: -2.4px;
+      line-height: 1.05;
+    }
+    h1 span { color: var(--purple); }
+    .hero p { color: #62576c; line-height: 1.75; max-width: 470px; font-size: 14px; }
+    .hero-art { position: relative; min-height: 270px; }
+    .hero-art img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 23px;
+      box-shadow: var(--shadow);
+    }
+    .floating-note {
+      position: absolute;
+      left: -15px;
+      bottom: 15px;
+      padding: 15px 18px;
+      border-radius: 16px;
+      background: white;
+      box-shadow: var(--shadow);
+      font-size: 12px;
       line-height: 1.7;
     }
-
-    .trust-card span { color: var(--teal); }
-
+    .floating-note strong { color: var(--purple); font-size: 14px; }
+    .primary {
+      border: none;
+      border-radius: 11px;
+      background: var(--purple);
+      color: white;
+      padding: 12px 17px;
+      font-size: 12px;
+      font-weight: 800;
+      transition: .2s;
+    }
+    .primary:hover { background: var(--purple-dark); transform: translateY(-1px); }
+    .secondary {
+      border: 1px solid #e5d8f1;
+      background: white;
+      color: var(--purple);
+      border-radius: 10px;
+      padding: 10px 13px;
+      font-size: 12px;
+      font-weight: 750;
+    }
     .features {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-      margin: 22px 0 38px;
+      margin: 22px 0 40px;
     }
-
     .feature {
       display: flex;
       align-items: center;
-      gap: 13px;
-      background: white;
-      border: 1px solid #f0e8f3;
-      border-radius: 16px;
+      gap: 12px;
       padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: white;
     }
-
     .feature-icon {
-      width: 43px;
-      height: 43px;
-      flex-shrink: 0;
       display: grid;
       place-items: center;
+      width: 43px;
+      height: 43px;
       border-radius: 13px;
-      background: #f0e8ff;
-      font-size: 22px;
+      background: var(--pink);
+      font-size: 21px;
+      flex-shrink: 0;
     }
-
-    .feature strong { font-size: 14px; }
-
-    .feature small {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
+    .feature:nth-child(2) .feature-icon { background: var(--teal); }
+    .feature:nth-child(3) .feature-icon { background: #eee6ff; }
+    .feature strong { display: block; font-size: 12px; margin-bottom: 5px; }
+    .feature small { color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .section { margin-top: 40px; }
     .section-heading {
       display: flex;
       align-items: end;
       justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 17px;
+      gap: 16px;
+      margin-bottom: 18px;
     }
-
-    h2 {
-      margin: 0;
-      font-size: 25px;
-      letter-spacing: -.6px;
+    .section-heading h2 { margin: 0 0 6px; font-size: 25px; letter-spacing: -.6px; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 12px; }
+    .categories { display: flex; gap: 9px; flex-wrap: wrap; margin: 0 0 20px; }
+    .category {
+      border: 1px solid var(--line);
+      background: white;
+      color: #6f657b;
+      border-radius: 99px;
+      padding: 9px 14px;
+      font-size: 12px;
+      font-weight: 700;
     }
-
-    .section-heading p {
-      margin: 7px 0 0;
-      color: var(--muted);
-      font-size: 14px;
+    .category.active, .category:hover {
+      background: var(--purple);
+      color: white;
+      border-color: var(--purple);
     }
-
     .products {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 17px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 19px;
     }
-
     .product {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 19px;
       background: white;
-      border: 1px solid #eee7f2;
-      border-radius: 18px;
-      padding: 13px;
-      transition: transform .2s, box-shadow .2s;
+      transition: .2s;
+      min-width: 0;
     }
-
-    .product:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px #4d236012;
-    }
-
+    .product:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
     .product-image {
-      height: 155px;
-      display: grid;
-      place-items: center;
+      width: 100%;
+      height: 205px;
+      display: block;
+      object-fit: cover;
       border-radius: 13px;
-      background: linear-gradient(140deg, #f5edff, #fff0e3);
-      font-size: 68px;
+      background: #f5f0fa;
     }
-
-    .product h3 {
-      margin: 15px 0 7px;
-      font-size: 16px;
-    }
-
-    .stars { color: #e89a00; }
-
-    .rating {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .price {
-      margin: 10px 0 13px;
-      font-size: 19px;
+    .product-tag {
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      background: #fff1d9;
+      color: #885117;
+      border-radius: 99px;
+      padding: 6px 9px;
+      font-size: 10px;
       font-weight: 800;
     }
-
-    .product .primary { width: 100%; }
-
+    .heart {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      border: none;
+      background: white;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      box-shadow: 0 3px 12px #00000012;
+      font-size: 17px;
+    }
+    .product h3 { font-size: 15px; margin: 14px 3px 8px; }
+    .stars { color: #e99b24; font-size: 13px; margin: 0 3px 9px; }
+    .rating { color: var(--muted); font-size: 10px; }
+    .price-row { display: flex; align-items: baseline; gap: 8px; margin: auto 3px 13px; padding-top: 3px; }
+    .price { font-size: 19px; font-weight: 850; }
+    .old-price { color: #a29aaa; font-size: 11px; text-decoration: line-through; }
+    .product-actions { display: flex; gap: 8px; }
+    .product-actions button { flex: 1; }
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 35px;
+      text-align: center;
+      border: 1px dashed #d7c9e7;
+      border-radius: 16px;
+      color: var(--muted);
+    }
     .review-section {
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 25px;
-      margin-top: 45px;
-      align-items: start;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 24px;
+      margin-top: 52px;
+      align-items: stretch;
     }
-
-    .review-info, .review-form {
-      background: white;
-      border: 1px solid #eee7f2;
-      border-radius: 21px;
-      padding: 25px;
-    }
-
     .review-info {
-      background: linear-gradient(145deg, #eee7ff, #fff0e0);
+      padding: 32px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #e3f8f1, #f1e8ff);
     }
-
-    .review-info p {
-      color: #615b71;
-      line-height: 1.8;
-    }
-
-    .review-form label {
-      display: block;
-      margin: 16px 0 8px;
-      font-size: 13px;
-      font-weight: 750;
-    }
-
-    .review-form select,
-    .review-form textarea,
-    .review-form input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #e4dbe9;
-      border-radius: 11px;
+    .review-info h2 { font-size: 30px; letter-spacing: -1px; }
+    .review-info p { color: #665d72; font-size: 13px; line-height: 1.8; }
+    .review-form {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
       background: white;
-      outline-color: var(--purple);
+      box-shadow: var(--shadow);
     }
-
-    .review-form textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .review-form .primary {
+    .review-form h2 { margin: 0 0 20px; font-size: 22px; }
+    label { display: block; font-size: 12px; font-weight: 800; margin: 15px 0 7px; }
+    select, textarea, input[type="text"], input[type="email"], input[type="tel"] {
       width: 100%;
-      margin-top: 17px;
-      padding: 14px;
+      border: 1px solid #e8e1ed;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+      color: var(--ink);
     }
-
+    textarea { min-height: 125px; resize: vertical; line-height: 1.6; }
+    .review-form .primary { width: 100%; margin-top: 16px; }
     .result {
       display: none;
+      padding: 16px;
+      border-radius: 13px;
       margin-top: 16px;
-      padding: 15px;
-      border-radius: 12px;
-      line-height: 1.6;
       overflow-wrap: anywhere;
+      line-height: 1.6;
+      font-size: 12px;
     }
-
-    footer {
-      padding: 25px;
-      background: #29213d;
-      color: #f5edf9;
+    .result p { margin: 8px 0; }
+    .result small { display: block; margin-top: 8px; }
+    .notice { color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 38px;
+    }
+    .trust-tile {
+      padding: 20px;
+      border-radius: 15px;
+      background: var(--cream);
       text-align: center;
-      font-size: 13px;
     }
+    .trust-tile strong { display: block; margin: 8px 0; font-size: 13px; }
+    .trust-tile small { color: var(--muted); font-size: 11px; }
+    footer {
+      padding: 28px 5%;
+      background: #2d1b43;
+      color: #f7edff;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+    footer .footer-inner {
+      max-width: 1300px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    footer a { color: #ffcf83; }
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: #20132d77;
+    }
+    .overlay.open { display: block; }
+    .drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: min(440px, 100%);
+      padding: 24px;
+      background: white;
+      overflow-y: auto;
+      box-shadow: -10px 0 35px #00000015;
+    }
+    .drawer-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+      margin-bottom: 18px;
+    }
+    .drawer-head h2 { margin: 0; font-size: 21px; }
+    .close-button {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 9px;
+      padding: 8px 12px;
+    }
+    .cart-item {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .cart-item img { width: 70px; height: 70px; object-fit: cover; border-radius: 10px; }
+    .cart-item strong { font-size: 12px; }
+    .cart-item small { display: block; margin-top: 5px; color: var(--muted); }
+    .quantity { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+    .quantity button { border: 1px solid var(--line); background: white; border-radius: 6px; width: 25px; height: 25px; }
+    .remove { border: none; background: none; color: #b24b63; font-size: 11px; }
+    .total-row { display: flex; justify-content: space-between; margin: 18px 0; font-weight: 850; }
+    .wide { width: 100%; }
+    .drawer .primary { margin-top: 10px; }
+    .profile-avatar {
+      width: 65px; height: 65px; display: grid; place-items: center;
+      background: var(--pink); border-radius: 50%; font-size: 30px; margin-bottom: 14px;
+    }
+    .panel-card {
+      border: 1px solid var(--line);
+      padding: 15px;
+      border-radius: 13px;
+      margin: 12px 0;
+    }
+    .panel-card h3 { font-size: 13px; margin: 0 0 10px; }
+    .panel-card p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .panel-card label { margin-top: 10px; }
+    .order-line { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .order-line strong { font-size: 13px; }
+    .status-pill {
+      display: inline-block;
+      padding: 5px 8px;
+      background: var(--teal);
+      color: #176654;
+      border-radius: 99px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .toast {
+      position: fixed;
+      z-index: 70;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      max-width: calc(100% - 30px);
+      background: #302040;
+      color: white;
+      padding: 13px 18px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      font-size: 12px;
+    }
+    .toast.show { display: block; }
+    .muted { color: var(--muted); }
+    .mobile-menu { display: none; }
 
-    footer span { color: #ffb74d; }
-
-    @media (max-width: 850px) {
-      .hero { grid-template-columns: 1fr; padding: 28px; }
-      .hero-art { min-height: 120px; }
+    @media (max-width: 1050px) {
+      header { gap: 14px; flex-wrap: wrap; }
+      nav { order: 3; width: 100%; justify-content: center; }
+      .search { margin-left: auto; }
+      .hero { padding: 28px; }
+      .product-image { height: 175px; }
+    }
+    @media (max-width: 760px) {
+      main { padding: 20px 4% 45px; }
+      header { padding: 13px 4%; gap: 10px; }
+      .logo { font-size: 23px; }
+      nav { gap: 14px; overflow-x: auto; justify-content: flex-start; }
+      nav a { white-space: nowrap; font-size: 12px; }
+      .search { order: 4; flex-basis: 100%; max-width: none; }
+      .hero { grid-template-columns: 1fr; padding: 24px; }
+      .hero-art img { height: 230px; }
+      .floating-note { left: 8px; }
       .features { grid-template-columns: 1fr; }
-      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .product-image { height: 150px; }
       .review-section { grid-template-columns: 1fr; }
+      .trust-strip { grid-template-columns: 1fr; }
     }
-
-    @media (max-width: 480px) {
-      header { padding: 16px; }
-      nav { gap: 13px; }
-      .search, .search input { width: 100%; }
-      main { padding: 18px 13px 40px; }
-      .products { gap: 10px; }
-      .product { padding: 9px; }
-      .product-image { height: 115px; font-size: 48px; }
+    @media (max-width: 420px) {
+      .announcement { font-size: 10px; }
+      .products { gap: 9px; }
+      .product { padding: 8px; }
+      .product-image { height: 120px; }
+      .product h3 { font-size: 13px; }
+      .price { font-size: 16px; }
+      .product-actions { flex-direction: column; }
+      .product-tag { top: 15px; left: 15px; }
+      .heart { top: 14px; right: 14px; }
+      .section-heading h2 { font-size: 21px; }
+      .review-info, .review-form { padding: 21px; }
+      .icon-button { padding: 9px; font-size: 11px; }
     }
   </style>
 </head>
 <body>
   <div class="announcement">
-    ✨ Shop smarter. Discover trusted reviews. Celebrate better choices.
+    ✨ Shop smarter · Discover trusted reviews · Celebrate better choices
   </div>
 
   <header>
-    <div class="logo">We<span>Review</span></div>
-    <nav>
+    <a class="logo" href="#home" aria-label="WeReview home">We<span>Review</span></a>
+    <nav aria-label="Main navigation">
       <a href="#home">Home</a>
-      <a href="#products">Products</a>
-      <a href="#trust">How it works</a>
-      <a href="#reviews">Reviews</a>
+      <a href="#products">Shop</a>
+      <a href="#trust">Why WeReview</a>
+      <a href="#reviews">Write a review</a>
     </nav>
     <div class="search">
-      <input id="searchInput" type="search" placeholder="Search products...">
-      <button type="button" onclick="searchProducts()">Search</button>
+      <input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products">
+      <button class="primary" type="button" id="searchButton">Search</button>
     </div>
+    <button class="icon-button" type="button" onclick="openPanel('wishlist')">♡ <span id="wishlistCount" class="count">0</span></button>
+    <button class="icon-button" type="button" onclick="openPanel('cart')">🛍 Cart <span id="cartCount" class="count">0</span></button>
+    <button class="icon-button" type="button" onclick="openPanel('profile')">👤 Account</button>
   </header>
 
   <main>
     <section class="hero" id="home">
       <div>
-        <div class="eyebrow">AI-powered · Trust-first shopping</div>
-        <h1>Real reviews.<br><span>Better choices.</span></h1>
+        <div class="eyebrow">✦ AI-powered · Trust-first shopping</div>
+        <h1>Shop happy.<br><span>Choose wisely.</span></h1>
         <p>
-          Discover products with more confidence. WeReview uses AI to assess
-          customer reviews and helps make review integrity more transparent.
+          Discover everyday favourites and explore customer experiences.
+          WeReview uses AI to assess review text so you can make more informed
+          shopping decisions.
         </p>
         <button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
           Explore products ↓
         </button>
       </div>
       <div class="hero-art">
-        <div class="trust-card">
-          🛡️ WeReview Trust<br>
-          <span>✓ AI review analysis</span><br>
-          🔗 Review integrity
+        <img
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1100&auto=format&fit=crop&q=85"
+          alt="Bright, modern retail store">
+        <div class="floating-note">
+          <strong>🛡️ Shopping with more confidence</strong><br>
+          AI-assisted review analysis<br>
+          <span class="muted">Clear signals, better decisions</span>
         </div>
       </div>
     </section>
@@ -401,78 +560,57 @@
       </div>
       <div class="feature">
         <div class="feature-icon">🔐</div>
-        <div><strong>Review integrity</strong><small>SHA-256 hashes help detect content changes.</small></div>
+        <div><strong>Review integrity</strong><small>SHA-256 hashes help identify matching review content.</small></div>
       </div>
       <div class="feature">
         <div class="feature-icon">🇮🇳</div>
-        <div><strong>Shopping with confidence</strong><small>Clear information for better decisions.</small></div>
+        <div><strong>Made for smarter shopping</strong><small>Clear product information and an easy review flow.</small></div>
       </div>
     </section>
 
-    <section id="products">
+    <section class="section" id="products">
       <div class="section-heading">
         <div>
-          <h2>Popular picks</h2>
-          <p>Explore our sample product collection.</p>
+          <h2>Find your next favourite</h2>
+          <p>Explore the collection and share your experience with the community.</p>
         </div>
+        <span class="muted" id="productCount" style="font-size:12px"></span>
       </div>
 
-      <div class="products" id="productGrid">
-        <article class="product" data-name="wireless headphones">
-          <div class="product-image">🎧</div>
-          <h3>Wireless Headphones</h3>
-          <div class="stars">★★★★★ <span class="rating">(128 reviews)</span></div>
-          <div class="price">₹2,499</div>
-          <button class="primary" onclick="selectProduct('Wireless Headphones')">View & review</button>
-        </article>
-
-        <article class="product" data-name="smart watch">
-          <div class="product-image">⌚</div>
-          <h3>Smart Watch</h3>
-          <div class="stars">★★★★☆ <span class="rating">(94 reviews)</span></div>
-          <div class="price">₹3,199</div>
-          <button class="primary" onclick="selectProduct('Smart Watch')">View & review</button>
-        </article>
-
-        <article class="product" data-name="everyday backpack">
-          <div class="product-image">🎒</div>
-          <h3>Everyday Backpack</h3>
-          <div class="stars">★★★★★ <span class="rating">(76 reviews)</span></div>
-          <div class="price">₹1,299</div>
-          <button class="primary" onclick="selectProduct('Everyday Backpack')">View & review</button>
-        </article>
-
-        <article class="product" data-name="running shoes">
-          <div class="product-image">👟</div>
-          <h3>Running Shoes</h3>
-          <div class="stars">★★★★☆ <span class="rating">(112 reviews)</span></div>
-          <div class="price">₹2,099</div>
-          <button class="primary" onclick="selectProduct('Running Shoes')">View & review</button>
-        </article>
+      <div class="categories" id="categoryButtons" aria-label="Filter by category">
+        <button class="category active" data-category="All">All products</button>
+        <button class="category" data-category="Audio">Audio</button>
+        <button class="category" data-category="Wearables">Wearables</button>
+        <button class="category" data-category="Bags">Bags</button>
+        <button class="category" data-category="Fashion">Fashion</button>
+        <button class="category" data-category="Lifestyle">Lifestyle</button>
       </div>
+
+      <div class="products" id="productGrid"></div>
     </section>
 
     <section class="review-section" id="reviews">
       <div class="review-info">
-        <div class="eyebrow">Your voice matters</div>
-        <h2 style="margin-top:12px">Review with confidence.</h2>
+        <div class="eyebrow">🌼 Your voice matters</div>
+        <h2>Every experience tells a story.</h2>
         <p>
-          Choose a product and share your experience. Our existing machine
-          learning model will assess the review and return a prediction.
+          Bought something you love—or something that could be better?
+          Choose a product, leave an honest review, and let our AI assess the
+          review text.
         </p>
-        <p>🌼 Honest experiences help everyone make better choices.</p>
+        <p>⭐ Describe what you liked, how you used the product, and what could improve.</p>
+        <p>🔎 The AI result is a prediction, not proof that a review is genuine or fake.</p>
+        <button class="secondary" type="button" onclick="showToast('Choose a product in the form to get started.')">
+          How reviews work
+        </button>
       </div>
 
       <form class="review-form" id="reviewForm">
-        <h2>Write a review</h2>
+        <h2>Write a product review ✍️</h2>
+        <p class="notice">Demo storefront: the current model analyses review text and rating. Product selection is part of the UI; the existing Flask endpoint receives the text and rating.</p>
 
-        <label for="productName">Product</label>
-        <select id="productName" required>
-          <option value="Wireless Headphones">Wireless Headphones</option>
-          <option value="Smart Watch">Smart Watch</option>
-          <option value="Everyday Backpack">Everyday Backpack</option>
-          <option value="Running Shoes">Running Shoes</option>
-        </select>
+        <label for="productName">Which product are you reviewing?</label>
+        <select id="productName" required></select>
 
         <label for="rating">Your star rating</label>
         <select id="rating" required>
@@ -487,37 +625,492 @@
         <textarea id="reviewText" minlength="10" required
           placeholder="Tell us what you liked, what could improve, and how you used the product..."></textarea>
 
-        <button class="primary" type="submit">Analyze my review ✨</button>
+        <button class="primary" id="analyzeButton" type="submit">Analyze my review ✨</button>
         <div class="result" id="result" role="status" aria-live="polite"></div>
       </form>
+    </section>
+
+    <section class="trust-strip" aria-label="About WeReview">
+      <div class="trust-tile">
+        <div style="font-size:25px">🔍</div>
+        <strong>Look beyond the stars</strong>
+        <small>Read review details and consider multiple experiences.</small>
+      </div>
+      <div class="trust-tile">
+        <div style="font-size:25px">🧠</div>
+        <strong>AI-assisted signals</strong>
+        <small>Use model predictions as guidance, not as final proof.</small>
+      </div>
+      <div class="trust-tile">
+        <div style="font-size:25px">🤝</div>
+        <strong>Built around trust</strong>
+        <small>Honest feedback helps shoppers make informed decisions.</small>
+      </div>
     </section>
   </main>
 
   <footer>
-    <strong>WeReview</strong> · Built with AI and a commitment to <span>trust</span>.
-    <br><br>Demo storefront · Sample products and ratings are illustrative.
+    <div class="footer-inner">
+      <div>
+        <strong style="font-size:20px">We<span style="color:#ffbd66">Review</span></strong>
+        <div>Shop with curiosity. Review with honesty.</div>
+        <div style="color:#cfc1dc">Demo storefront · Sample products, prices and ratings are illustrative.</div>
+      </div>
+      <div>
+        <strong>Explore</strong><br>
+        <a href="#products">Products</a> ·
+        <a href="#reviews">Write a review</a> ·
+        <a href="#trust">Our approach</a>
+      </div>
+      <div>
+        <strong>Project note</strong><br>
+        AI review classification is enabled.<br>
+        Blockchain integration is planned for a separate phase.
+      </div>
+    </div>
   </footer>
 
+  <!-- Functional demo panels: cart, wishlist, profile, settings and orders -->
+  <div class="overlay" id="panelOverlay" onclick="overlayClick(event)">
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <div class="drawer-head">
+        <h2 id="drawerTitle">Your account</h2>
+        <button class="close-button" onclick="closePanel()" aria-label="Close panel">✕ Close</button>
+      </div>
+      <div id="drawerContent"></div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <script>
-    function selectProduct(name) {
-      document.getElementById("productName").value = name;
-      document.getElementById("reviews").scrollIntoView({ behavior: "smooth" });
+    const products = [
+      {
+        id: "headphones",
+        name: "Wireless Headphones",
+        category: "Audio",
+        price: 2499,
+        oldPrice: 3299,
+        rating: "★★★★★",
+        reviews: 128,
+        tag: "Bestseller",
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "watch",
+        name: "Smart Watch",
+        category: "Wearables",
+        price: 3199,
+        oldPrice: 3999,
+        rating: "★★★★☆",
+        reviews: 94,
+        tag: "Popular",
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "backpack",
+        name: "Everyday Backpack",
+        category: "Bags",
+        price: 1299,
+        oldPrice: 1699,
+        rating: "★★★★★",
+        reviews: 76,
+        tag: "Everyday pick",
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "shoes",
+        name: "Running Shoes",
+        category: "Fashion",
+        price: 2099,
+        oldPrice: 2799,
+        rating: "★★★★☆",
+        reviews: 112,
+        tag: "Trending",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "sunglasses",
+        name: "Classic Sunglasses",
+        category: "Fashion",
+        price: 899,
+        oldPrice: 1199,
+        rating: "★★★★☆",
+        reviews: 58,
+        tag: "",
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700&auto=format&fit=crop&q=80"
+      },
+      {
+        id: "mug",
+        name: "Travel Coffee Mug",
+        category: "Lifestyle",
+        price: 599,
+        oldPrice: 799,
+        rating: "★★★★★",
+        reviews: 43,
+        tag: "Under ₹1,000",
+        image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=700&auto=format&fit=crop&q=80"
+      }
+    ];
+
+    const cart = {};
+    const wishlist = new Set();
+    const demoOrders = [
+      { id: "WR-1042", product: "Wireless Headphones", total: 2499, status: "Delivered", date: "12 Oct 2026" },
+      { id: "WR-1035", product: "Everyday Backpack", total: 1299, status: "Delivered", date: "03 Oct 2026" }
+    ];
+
+    let activeCategory = "All";
+    let currentPanel = "profile";
+    let toastTimeout;
+
+    const money = amount => "₹" + Number(amount).toLocaleString("en-IN");
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      })[char]);
     }
 
-    function searchProducts() {
-      const query = document.getElementById("searchInput").value.toLowerCase().trim();
-      document.querySelectorAll(".product").forEach(card => {
-        card.style.display = card.dataset.name.includes(query) ? "" : "none";
+    function renderProducts() {
+      const grid = document.getElementById("productGrid");
+      const query = document.getElementById("searchInput").value.trim().toLowerCase();
+
+      const filtered = products.filter(product => {
+        const categoryMatches = activeCategory === "All" || product.category === activeCategory;
+        const queryMatches = (product.name + " " + product.category).toLowerCase().includes(query);
+        return categoryMatches && queryMatches;
       });
+
+      document.getElementById("productCount").textContent =
+        filtered.length + (filtered.length === 1 ? " product" : " products");
+
+      if (!filtered.length) {
+        grid.innerHTML = '<div class="empty-state">No products found. Try another search or category.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(product => `
+        <article class="product">
+          <div style="position:relative">
+            <img class="product-image"
+              src="${product.image}"
+              alt="${escapeHTML(product.name)}"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400/f5f0fa/6538a5?text=WeReview+Product'">
+            ${product.tag ? `<span class="product-tag">${escapeHTML(product.tag)}</span>` : ""}
+            <button class="heart" type="button"
+              onclick="toggleWishlist('${product.id}')"
+              aria-label="Toggle wishlist for ${escapeHTML(product.name)}"
+              title="Add to wishlist">${wishlist.has(product.id) ? "♥" : "♡"}</button>
+          </div>
+          <h3>${escapeHTML(product.name)}</h3>
+          <div class="stars">${product.rating} <span class="rating">(${product.reviews} sample reviews)</span></div>
+          <div class="price-row">
+            <span class="price">${money(product.price)}</span>
+            <span class="old-price">${money(product.oldPrice)}</span>
+          </div>
+          <div class="product-actions">
+            <button class="secondary" type="button" onclick="selectProduct('${product.id}')">Review</button>
+            <button class="primary" type="button" onclick="addToCart('${product.id}')">Add to cart</button>
+          </div>
+        </article>
+      `).join("");
     }
 
-    document.getElementById("reviewForm").addEventListener("submit", async function(event) {
+    function renderProductOptions(selectedId) {
+      const select = document.getElementById("productName");
+      select.innerHTML = products.map(product =>
+        `<option value="${product.id}">${escapeHTML(product.name)}</option>`
+      ).join("");
+      if (selectedId && products.some(product => product.id === selectedId)) {
+        select.value = selectedId;
+      }
+    }
+
+    function selectProduct(id) {
+      renderProductOptions(id);
+      document.getElementById("reviews").scrollIntoView({ behavior: "smooth" });
+      document.getElementById("reviewText").focus({ preventScroll: true });
+    }
+
+    function addToCart(id) {
+      cart[id] = (cart[id] || 0) + 1;
+      updateCounts();
+      showToast(products.find(p => p.id === id).name + " added to your cart.");
+    }
+
+    function changeQuantity(id, amount) {
+      cart[id] = (cart[id] || 0) + amount;
+      if (cart[id] <= 0) delete cart[id];
+      updateCounts();
+      renderPanel();
+    }
+
+    function removeFromCart(id) {
+      delete cart[id];
+      updateCounts();
+      renderPanel();
+    }
+
+    function updateCounts() {
+      document.getElementById("cartCount").textContent =
+        Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
+      document.getElementById("wishlistCount").textContent = wishlist.size;
+      renderProducts();
+    }
+
+    function toggleWishlist(id) {
+      const product = products.find(p => p.id === id);
+      if (wishlist.has(id)) {
+        wishlist.delete(id);
+        showToast(product.name + " removed from wishlist.");
+      } else {
+        wishlist.add(id);
+        showToast(product.name + " saved to wishlist.");
+      }
+      updateCounts();
+      if (currentPanel === "wishlist") renderPanel();
+    }
+
+    function openPanel(panel) {
+      currentPanel = panel;
+      document.getElementById("panelOverlay").classList.add("open");
+      document.body.style.overflow = "hidden";
+      renderPanel();
+    }
+
+    function closePanel() {
+      document.getElementById("panelOverlay").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    function overlayClick(event) {
+      if (event.target.id === "panelOverlay") closePanel();
+    }
+
+    function renderPanel() {
+      const title = document.getElementById("drawerTitle");
+      const content = document.getElementById("drawerContent");
+
+      if (currentPanel === "cart") {
+        title.textContent = "Your shopping cart";
+        const entries = Object.entries(cart);
+        if (!entries.length) {
+          content.innerHTML = '<div class="empty-state">🛍️<br><br>Your cart is empty.<br>Explore the collection and add something you love.</div><button class="primary wide" onclick="closePanel();document.getElementById(\'products\').scrollIntoView({behavior:\'smooth\'})">Explore products</button>';
+          return;
+        }
+
+        const total = entries.reduce((sum, [id, qty]) =>
+          sum + products.find(p => p.id === id).price * qty, 0);
+
+        content.innerHTML = entries.map(([id, qty]) => {
+          const product = products.find(p => p.id === id);
+          return `<div class="cart-item">
+            <img src="${product.image}" alt="${escapeHTML(product.name)}">
+            <div><strong>${escapeHTML(product.name)}</strong><small>${money(product.price)} each</small>
+              <div class="quantity">
+                <button onclick="changeQuantity('${id}',-1)" aria-label="Decrease quantity">−</button>
+                <span>${qty}</span>
+                <button onclick="changeQuantity('${id}',1)" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+            <button class="remove" onclick="removeFromCart('${id}')">Remove</button>
+          </div>`;
+        }).join("") + `
+          <div class="total-row"><span>Demo subtotal</span><span>${money(total)}</span></div>
+          <p class="notice">This is a demo cart. No real payment will be taken and no order will be sent to a server.</p>
+          <button class="primary wide" onclick="demoCheckout()">Place demo order</button>`;
+        return;
+      }
+
+      if (currentPanel === "wishlist") {
+        title.textContent = "Your wishlist";
+        const saved = products.filter(p => wishlist.has(p.id));
+        content.innerHTML = saved.length ? saved.map(product => `
+          <div class="cart-item">
+            <img src="${product.image}" alt="${escapeHTML(product.name)}">
+            <div><strong>${escapeHTML(product.name)}</strong><small>${money(product.price)}</small>
+              <button class="secondary" style="margin-top:8px" onclick="addToCart('${product.id}')">Add to cart</button>
+            </div>
+            <button class="remove" onclick="toggleWishlist('${product.id}')">Remove</button>
+          </div>
+        `).join("") : '<div class="empty-state">♡<br><br>Your wishlist is empty.<br>Tap the heart on a product to save it here.</div>';
+        return;
+      }
+
+      if (currentPanel === "orders") {
+        title.textContent = "My orders";
+        const orders = JSON.parse(sessionStorage.getItem("wereviewDemoOrders") || "[]").concat(demoOrders);
+        content.innerHTML = '<p class="notice">Sample order history for the storefront demonstration.</p>' +
+          orders.map(order => `<div class="order-line">
+            <strong>${escapeHTML(order.product)}</strong>
+            <p class="muted" style="font-size:11px;margin:6px 0">Order ${escapeHTML(order.id)} · ${escapeHTML(order.date)}</p>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>${money(order.total)}</strong><span class="status-pill">${escapeHTML(order.status)}</span>
+            </div>
+          </div>`).join("");
+        return;
+      }
+
+      if (currentPanel === "settings") {
+        title.textContent = "Settings";
+        content.innerHTML = `
+          <div class="panel-card">
+            <h3>Shopping preferences</h3>
+            <label for="prefCurrency">Currency</label>
+            <select id="prefCurrency"><option>INR — Indian Rupee (₹)</option></select>
+            <label for="prefLanguage">Language</label>
+            <select id="prefLanguage"><option>English</option><option>हिन्दी (Hindi)</option><option>ಕನ್ನಡ (Kannada)</option></select>
+            <label><input type="checkbox" id="prefOffers" checked> Show demo offers and recommendations</label>
+            <button class="primary wide" onclick="saveSettings()">Save preferences</button>
+          </div>
+          <div class="panel-card">
+            <h3>Privacy & review analysis</h3>
+            <p>The review text is sent to the local Flask model when you submit it. This demo does not provide account authentication or a privacy-settings backend.</p>
+          </div>`;
+        return;
+      }
+
+      title.textContent = "My profile";
+      content.innerHTML = `
+        <div class="profile-avatar">👤</div>
+        <h3 style="margin-bottom:5px">Welcome to WeReview!</h3>
+        <p class="notice">Demo profile — information is not connected to an account server.</p>
+        <div class="panel-card">
+          <h3>Profile details</h3>
+          <label for="profileName">Your name</label>
+          <input type="text" id="profileName" placeholder="Enter your name">
+          <label for="profileEmail">Email address</label>
+          <input type="email" id="profileEmail" placeholder="you@example.com">
+          <label for="profilePhone">Phone number</label>
+          <input type="tel" id="profilePhone" placeholder="+91">
+          <button class="primary wide" onclick="saveProfile()">Save profile on this device</button>
+        </div>
+        <div class="panel-card">
+          <h3>📍 Delivery location</h3>
+          <label for="profileCity">City / town</label>
+          <input type="text" id="profileCity" placeholder="e.g. Bengaluru">
+          <label for="profileAddress">Delivery address</label>
+          <textarea id="profileAddress" style="min-height:75px" placeholder="House number, street, area, PIN code"></textarea>
+          <button class="secondary wide" onclick="saveProfile()">Save address on this device</button>
+          <p>Location is entered manually. This demo does not request your device location.</p>
+        </div>
+        <button class="secondary wide" onclick="openPanel('orders')">📦 View my orders</button>
+        <button class="secondary wide" style="margin-top:9px" onclick="openPanel('settings')">⚙️ Settings & preferences</button>`;
+      loadProfile();
+    }
+
+    function saveProfile() {
+      const fields = ["profileName", "profileEmail", "profilePhone", "profileCity", "profileAddress"];
+      const data = {};
+      fields.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) data[id] = element.value;
+      });
+      try {
+        localStorage.setItem("wereviewDemoProfile", JSON.stringify(data));
+        showToast("Demo profile saved on this device.");
+      } catch (error) {
+        showToast("Unable to save in this browser session.");
+      }
+    }
+
+    function loadProfile() {
+      try {
+        const data = JSON.parse(localStorage.getItem("wereviewDemoProfile") || "{}");
+        Object.entries(data).forEach(([id, value]) => {
+          const element = document.getElementById(id);
+          if (element) element.value = value;
+        });
+      } catch (error) {
+        // Use the empty demo profile if saved browser data cannot be read.
+      }
+    }
+
+    function saveSettings() {
+      const settings = {
+        language: document.getElementById("prefLanguage").value,
+        offers: document.getElementById("prefOffers").checked
+      };
+      try {
+        localStorage.setItem("wereviewDemoSettings", JSON.stringify(settings));
+        showToast("Demo preferences saved.");
+      } catch (error) {
+        showToast("Unable to save preferences in this browser.");
+      }
+    }
+
+    function demoCheckout() {
+      const entries = Object.entries(cart);
+      if (!entries.length) return;
+
+      const total = entries.reduce((sum, [id, qty]) =>
+        sum + products.find(p => p.id === id).price * qty, 0);
+      const names = entries.map(([id, qty]) =>
+        qty + " × " + products.find(p => p.id === id).name).join(", ");
+      const order = {
+        id: "WR-" + Math.floor(1000 + Math.random() * 9000),
+        product: names,
+        total,
+        status: "Demo order placed",
+        date: new Date().toLocaleDateString("en-IN")
+      };
+
+      try {
+        const saved = JSON.parse(sessionStorage.getItem("wereviewDemoOrders") || "[]");
+        saved.unshift(order);
+        sessionStorage.setItem("wereviewDemoOrders", JSON.stringify(saved));
+      } catch (error) {
+        showToast("Unable to save demo order in this browser.");
+        return;
+      }
+
+      Object.keys(cart).forEach(id => delete cart[id]);
+      updateCounts();
+      currentPanel = "orders";
+      renderPanel();
+      showToast("Demo order placed. No payment was taken.");
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => toast.classList.remove("show"), 2800);
+    }
+
+    document.getElementById("searchButton").addEventListener("click", renderProducts);
+    document.getElementById("searchInput").addEventListener("input", renderProducts);
+
+    document.getElementById("categoryButtons").addEventListener("click", event => {
+      const button = event.target.closest("[data-category]");
+      if (!button) return;
+      activeCategory = button.dataset.category;
+      document.querySelectorAll(".category").forEach(item =>
+        item.classList.toggle("active", item === button));
+      renderProducts();
+    });
+
+    document.getElementById("reviewForm").addEventListener("submit", async event => {
       event.preventDefault();
 
       const result = document.getElementById("result");
+      const button = document.getElementById("analyzeButton");
       const reviewText = document.getElementById("reviewText").value.trim();
       const rating = Number(document.getElementById("rating").value);
 
+      if (reviewText.length < 10) {
+        result.style.display = "block";
+        result.style.background = "#fff0f0";
+        result.style.color = "#922";
+        result.textContent = "Please enter a review with at least 10 characters.";
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Analyzing…";
       result.style.display = "block";
       result.style.background = "#f1eaff";
       result.style.color = "#38205e";
@@ -527,36 +1120,36 @@
         const response = await fetch("/predict", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            review_text: reviewText,
-            rating: rating
-          })
+          body: JSON.stringify({ review_text: reviewText, rating })
         });
 
         const data = await response.json();
 
-        if (!response.ok) {
+        // Duplicate review is a meaningful result, not a server connection failure.
+        if (!response.ok && response.status !== 409) {
           throw new Error(data.error || "The review could not be analyzed.");
         }
 
         const isFake = data.prediction === "Potentially Fake";
         result.style.background = isFake ? "#fff0e5" : "#e2f7f0";
         result.style.color = isFake ? "#923c0e" : "#115e59";
-
         result.replaceChildren();
 
         const heading = document.createElement("strong");
-        heading.textContent = isFake
-          ? "⚠️ Potentially Fake Review"
-          : "✓ Classified as Genuine";
+        heading.textContent = isFake ? "⚠️ Potentially Fake Review" : "✓ Classified as Genuine";
         result.appendChild(heading);
 
         const details = document.createElement("p");
-        details.textContent =
-          "Model fake-class score: " +
+        details.textContent = "Model fake-class score: " +
           (Number(data.probability) * 100).toFixed(2) +
           "%. This is an AI prediction, not proof of authenticity.";
         result.appendChild(details);
+
+        if (data.duplicate) {
+          const duplicate = document.createElement("p");
+          duplicate.textContent = "ℹ️ This exact review was submitted before. Showing the saved result.";
+          result.appendChild(duplicate);
+        }
 
         if (data.content_hash) {
           const hash = document.createElement("small");
@@ -566,11 +1159,20 @@
       } catch (error) {
         result.style.background = "#fff0f0";
         result.style.color = "#922";
-        result.textContent =
-          "Unable to analyze the review. Make sure the Flask server is running. " +
-          error.message;
+        result.textContent = "Unable to analyze the review. " + error.message;
+      } finally {
+        button.disabled = false;
+        button.textContent = "Analyze my review ✨";
       }
     });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closePanel();
+    });
+
+    renderProductOptions();
+    renderProducts();
+    updateCounts();
   </script>
 </body>
 </html>
